@@ -6,6 +6,11 @@
 - redux  
 - redux-thunk
 - Tailwind css
+- React-Router-Dom
+- react-avatar
+
+- jwt-decode
+- react-oauth/google
 
 <!-- Server -->
 - Node.js
@@ -15,6 +20,25 @@
 - bodyParser
 - mongoose
 - cors
+- dotenv
+
+- bcryptjs
+- jsonwebtoken
+
+
+
+
+
+TODO: 
+ 
+ 
+ - refactor Redux with RTK
+ - Go over Redux and fetching code
+ - check out part 2 of video
+
+
+
+
 
 
 

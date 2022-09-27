@@ -1,31 +1,23 @@
-import React, { useEffect } from 'react';
-import Form from './components/form/Form';
-import Header from './components/Header';
-import Posts from './components/post/Posts';
 import './index.css';
-// Redux
-import { useDispatch } from 'react-redux';
-import { getPosts } from './actions/Posts';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Authentication from './pages/Authentication';
+import Header from './components/Header';
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  // Dispatching get post action for the getPost reducer
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
 
   return (
-    <main className='w-100 h-screen bg-slate-800'>
-      <section className='container mx-auto h-screen'>
-        <Header />
+    <>
+      <Header  />
 
-        <div className='flex justify-between content-center relative top-40'>
-          <Form />
-          <Posts />
-        </div>
-      </section>
-    </main>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route
+          path='/authentication'
+          element={<Authentication  />}
+        />
+      </Routes>
+    </>
   );
 };
 

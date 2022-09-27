@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../index.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
-import { createPost } from '../../actions/Posts';
+// import { createPost, getPosts, updatePost } from '../../actions/Posts';
+import {
+  createPost,
+  getPosts,
+  updatePost,
+} from '../../features/posts/PostsSlice';
 
-const Form = () => {
+const Form = ({ currentId, setCurrentId }) => {
+  // Using use selector to find post to edit
+  const post = useSelector((state) =>
+    currentId ? state.posts.posts.find((p) => p._id === currentId) : null
+  );
   const dispatch = useDispatch();
+
+  // Setting the newPost state to id information if matched on edit click
+  useEffect(() => {
+    if (post) setNewPost(post);
+  }, [post]);
 
   const [newPost, setNewPost] = useState({
     name: '',
@@ -15,23 +29,37 @@ const Form = () => {
     photo: '',
   });
 
+  // Submit button on form
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost(newPost));
-    // setNewPost({
-    //   name: '',
-    //   title: '',
-    //   message: '',
-    //   tags: '',
-    //   photo: '',
-    // });
+
+    if (currentId) {
+      dispatch(updatePost(currentId, newPost));
+      // console.log(updatePost);
+    } else {
+      dispatch(createPost(newPost));
+    }
+
+    // REDUX TOOLKIT
+    // dispatch(createPost(newPost));
+
+    setCurrentId(null);
+
+    setNewPost({
+      name: '',
+      title: '',
+      message: '',
+      tags: '',
+      photo: '',
+    });
+
+    setTimeout(() => {
+      dispatch(getPosts());
+    }, '5');
   };
 
-  
-
-  // console.log(handleSubmit);
-
-  const handleClear = () => {
+  // Clear button on form
+  const handleClear = ({ currentId, setCurrentId }) => {
     setNewPost({
       name: '',
       title: '',
@@ -41,117 +69,116 @@ const Form = () => {
     });
   };
 
-
-  // console.log(newPost.name);
-  // console.log(newPost.title);
-  // console.log(newPost.message);
-  // console.log(newPost.tags);
-  // console.log(newPost.photo);
-
   return (
     <form
-      className='w-full max-w-sm bg-white rounded p-15 flex flex-col'
+      className='xxs:w-52 xs:w-full xs:max-w-sm  bg-white rounded p-15 flex flex-col sticky top-40'
       onSubmit={handleSubmit}
     >
-      <h1 className='text-center text-3xl p-5 '>Post a Pupdate</h1>
+      {currentId ? (
+        <h1 className='text-center text-3xl p-5  '> Editing Post </h1>
+      ) : (
+        <h1 className='text-center text-3xl p-5  '> Post a Pupdate</h1>
+      )}
       <div className='p-5'>
         {/* Name */}
-        <div className='md:flex md:items-center relative right-7 mb-6'>
-          <div className='md:w-1/3'>
+        <div className='xxs:flex xxs:items-center relative right-7 mb-6 xxs:flex-col xs:flex-row '>
+          <div className='xxs:w-1/3'>
             <label
-              className='block text-gray-500 font-bold md:text-center mb-1 md:mb-0 pr-4'
+              className='block text-gray-500 font-bold xxs:text-center mb-1 xxs:mb-0 ml-8'
               for='inline-full-name'
             >
               Name{' '}
             </label>
           </div>
-          <div className='md:w-2/3 f'>
+          <div className='xxs:w-2/3 f'>
             <input
-              className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-slate-600'
+              className='xxs:ml-5 xs:ml-0 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-slate-600'
               id='inline-full-name'
               type='text'
               value={newPost.name}
               onChange={(e) => setNewPost({ ...newPost, name: e.target.value })}
-              // value='Jane Doe'
+              required
             />
           </div>
         </div>
         {/* Title */}
-        <div className='md:flex md:items-center mb-6 relative right-7'>
-          <div className='md:w-1/3'>
+        <div className='xxs:flex xxs:items-center mb-6 relative right-7 xxs:flex-col xs:flex-row '>
+          <div className='xxs:w-1/3'>
             <label
-              className='block text-gray-500 font-bold md:text-center mb-1 md:mb-0 pr-4'
+              className='block text-gray-500 font-bold xxs:text-center mb-1 xxs:mb-0  ml-8'
               for='inline-password'
             >
               Title
             </label>
           </div>
-          <div className='md:w-2/3'>
+          <div className='xxs:w-2/3'>
             <input
-              className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-slate-600'
+              className='xxs:ml-5 xs:ml-0 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-slate-600'
               id='inline-password'
               type='text'
               value={newPost.title}
               onChange={(e) =>
                 setNewPost({ ...newPost, title: e.target.value })
               }
-              // placeholder='******************'
+              required
             />
           </div>
         </div>
         {/* Message */}
-        <div className='md:flex md:items-center mb-6 relative right-7'>
-          <div className='md:w-1/3'>
+        <div className='xxs:flex xxs:items-center mb-6 relative right-7 xxs:flex-col xs:flex-row '>
+          <div className='xxs:w-1/3'>
             <label
-              className='block text-gray-500 font-bold md:text-center mb-1 md:mb-0 pr-4'
+              className='block text-gray-500 font-bold xxs:text-center mb-1 xxs:mb-0 ml-5'
               for='inline-password'
             >
               Message
             </label>
           </div>
-          <div className='md:w-2/3'>
+          <div className='xxs:w-2/3'>
             <textarea
-              className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-slate-600'
+              className='xxs:ml-5 xs:ml-0 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-slate-600'
               id='inline-password'
               type='password'
               value={newPost.message}
               onChange={(e) =>
                 setNewPost({ ...newPost, message: e.target.value })
               }
-              // placeholder='******************'
+              required
             />
           </div>
         </div>
         {/* Tags */}
-        <div className='md:flex md:items-center mb-6 relative right-7'>
-          <div className='md:w-1/3'>
+        <div className='xxs:flex xxs:items-center mb-6 relative right-7 xxs:flex-col xs:flex-row '>
+          <div className='xxs:w-1/3'>
             <label
-              className='block text-gray-500 font-bold md:text-center mb-1 md:mb-0 pr-4'
+              className='block text-gray-500 font-bold xxs:text-center mb-1 xxs:mb-0 ml-8'
               for='inline-password'
             >
               Tags
             </label>
           </div>
-          <div className='md:w-2/3'>
+          <div className='xxs:w-2/3'>
             <input
-              className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-slate-600'
+              className='xxs:ml-5 xs:ml-0 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-slate-600'
               id='inline-password'
               type='text'
               value={newPost.tags}
-              onChange={(e) => setNewPost({ ...newPost, tags: e.target.value })}
-              // placeholder='******************'
+              onChange={(e) =>
+                setNewPost({ ...newPost, tags: e.target.value.split(',#') })
+              }
+              required
             />
           </div>
         </div>
         {/* Photo */}
         <div>
           <div>
-            <label className='block text-gray-500 font-bold md:text-center mb-1 md:mb-0 pr-4 p-3'>
+            <label className='block text-gray-500 font-bold xxs:text-center mb-1 xxs:mb-0  p-3'>
               {' '}
               Photo{' '}
             </label>
-            <div className='mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md'>
-              <div className='space-y-1 text-center'>
+            <div className='mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xxs'>
+              <div className='space-y-1 text-center '>
                 <svg
                   className='mx-auto h-12 w-12 text-gray-400'
                   stroke='currentColor'
@@ -166,12 +193,13 @@ const Form = () => {
                     stroke-linejoin='round'
                   />
                 </svg>
-                <div className='flex text-sm text-gray-600'>
+                <div className='flex text-sm text-gray-600 file-wrapper '>
                   <label
                     for='file-upload'
-                    className='mt-3 ml-8 relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500'
+                    className='mt-3 ml-8 relative cursor-pointer bg-white rounded-xxs font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500'
                   >
                     <FileBase
+                      className='file-upload'
                       type='file'
                       multiple={false}
                       onDone={({ base64 }) =>
@@ -199,22 +227,22 @@ const Form = () => {
 
         {/* Buttons */}
         <div className='flex justify-around p-2 mr-14 mt-6'>
-          <div className='md:flex md:items-center'>
-            <div className='md:w-1/3'></div>
-            <div className='md:w-2/3'>
+          <div className='xxs:flex xxs:items-center'>
+            <div className='xxs:w-1/3'></div>
+            <div className='xxs:w-2/3'>
               <button
-                className='shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold py-4 px-7 rounded'
+                className='shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold xs:py-4 xs:px-7 rounded xxs:py-2 xxs:px-4 xxs:mr-2 xs:mr-0'
                 type='submit'
               >
                 Post
               </button>
             </div>
           </div>
-          <div className='md:flex md:items-center'>
-            <div className='md:w-1/3'></div>
-            <div className='md:w-2/3'>
+          <div className='xxs:flex xxs:items-center'>
+            <div className='xxs:w-1/3'></div>
+            <div className='xxs:w-2/3'>
               <button
-                className='shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold py-4 px-7 rounded'
+                className='shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold  xs:py-4 xs:px-7  xxs:py-2 xxs:px-4 rounded'
                 type='button'
                 onClick={handleClear}
               >
