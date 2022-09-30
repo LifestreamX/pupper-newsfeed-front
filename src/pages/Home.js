@@ -25,7 +25,6 @@ const App = () => {
     dispatch(getPosts());
   }, [dispatch, currentId]);
 
-  // console.log(posts);
 
   return (
     <main className='w-100 '>
@@ -39,7 +38,11 @@ const App = () => {
           </div>
           <div className='relative right-60 xl:relative xl:right-20 mt-20  xxs:flex xxs:justify-center xxs:right-0 top-16 '>
             {/* Loading icon while data is being fetched from the server  */}
-            {!posts ? <Loading /> : <Posts currentId={currentId} setCurrentId={setCurrentId} />}
+            {posts.posts.length !== 0 ? (
+              <Posts currentId={currentId} setCurrentId={setCurrentId} />
+            ) : (
+              <Loading />
+            )}
           </div>
         </div>
       </section>
