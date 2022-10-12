@@ -26,13 +26,23 @@ main {
   }
 
   .post-wrapper {
-    width: 85%;
-    
-
+    width: 100%;
   }
 
-  .edit-icon{
+  .edit-icon {
     right: 120px;
     bottom: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form {
+    position: relative;
+    bottom: 120px !important;
+  }
+
+  .google-form {
+    position: absolute;
+    top: 0;
   }
 }

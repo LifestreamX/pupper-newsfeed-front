@@ -71,7 +71,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   return (
     <form
-      className='xxs:w-52 xs:w-full xs:max-w-sm  bg-white rounded p-15 flex flex-col sticky top-40'
+      className='xxs:w-full xs:w-full xs:max-w-sm  bg-white rounded p-15 flex flex-col sticky top-40'
       onSubmit={handleSubmit}
     >
       {currentId ? (

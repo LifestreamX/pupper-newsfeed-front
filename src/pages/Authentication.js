@@ -3,10 +3,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
 import { useDispatch } from 'react-redux';
 // import { auth } from '../../features/posts/AuthSlice';
-import {
-  setSignedIn,
-  setUserData,
-} from '../features/posts/UserSlice';
+import { setSignedIn, setUserData } from '../features/posts/UserSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Authentication = () => {
@@ -54,10 +51,10 @@ const Authentication = () => {
 
   return (
     <main className='w-100 '>
-      <section className='container mx-auto '>
-        <div className=' xxs:top-80 xxs:justify-center xxs:align-middle  xxs:flex xxs:flex-row  xxs:content-center xxs:relative  '>
+      <section className='form container mx-auto '>
+        <div className='google-form-wrapper xxs:top-80 xxs:justify-center xxs:align-middle  xxs:flex xxs:flex-row  xxs:content-center xxs:relative  '>
           <form
-            className='xxs:w-52 xs:w-full xs:max-w-sm  bg-white rounded p-15 flex flex-col sticky top-40 '
+            className=' google-form xxs:w-100 xxs:relative  xs:w-full xs:max-w-sm  bg-white rounded p-15 flex flex-col sticky top-40'
             onSubmit={handleFormSignInSubmit}
           >
             <h1 className='justify-center align-middle text-center p-10 font-bold text-4xl '>
@@ -81,7 +78,6 @@ const Authentication = () => {
               </div>
             </div>{' '}
           </form>
-          0
         </div>
       </section>
     </main>
