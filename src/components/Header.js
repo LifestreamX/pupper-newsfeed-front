@@ -20,19 +20,16 @@ const Header = () => {
   };
 
   return (
-    <header className='bg-white flex justify-center relative top-10  py-8 xxs:flex'>
+    <header className='bg-white flex justify-evenly align-middle relative top-10  py-14 w-100'>
       {/* Left side  */}
-      <Link
-        to='/'
-        className='xxs:relative xxs:left-40 md:left-64 xl:left-20 2xl:left-0'
-      >
+      <Link to='/' className='absolute left-2 top-2  md:left-5'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
           viewBox='0 0 24 24'
           strokeWidth={1.5}
           stroke='currentColor'
-          className='w-10 h-10 relative right-80 top-5'
+          className='w-8 h-8 md:w-12 md:h-12   '
         >
           <path
             strokeLinecap='round'
@@ -43,38 +40,40 @@ const Header = () => {
       </Link>
 
       {/* Middle */}
-      <h1 className='font-bold xxs:text-2xl  xxs:right-5 xxs:top-4 xs:text-4xl  lg:text-6xl  '>
+      <h1 className='font-bold text-2xl absolute top-0  md:text-4xl lg:text-5xl'>
         {' '}
         Pupper Newsfeed
       </h1>
-      <Link to='/' className='xxs:relative xxs:right-10 sm:right-0'>
-        <img src={dog} alt='dog' className='mx-5' />
+      <Link to='/' className=''>
+        <img src={dog} alt='dog' className=' dog' />
       </Link>
 
       {/* Right Side */}
-      <div className=' relative flex flex-col xs:left-300 lg:left-20 xl:left-60   2xl:left-80 xxs:flex  '>
+      <div className=' absolute right-2 top-2 md:right-5'>
         {/* Sign in and Logout Buttons */}
 
         <>
           {user?.state?.isSignedIn ? (
-            <div className=' xxs:relative xxs:right-3'>
-              {/* <h1>{user.state?.userData?.name}</h1> */}
-              <Avatar
-                src={user.state?.userData?.picture}
-                round={true}
-                className='mr-5 mt-1'
-                size='60'
-              />
+            <div className=' relative flex flex-col justify-center align-middle'>
+              <div className=' flex justify-center '>
+                <Avatar
+                  src={user.state?.userData?.picture}
+                  round={true}
+                  className=''
+                  size='50'
+                />
+              </div>
+
               <button
                 onClick={handleSignOut}
-                className='relative left-1 top-3 shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold xxs:right-3 xs:py-2 xs:px-2  xxs:py-2 xxs:px-4 rounded '
+                className='relative top-2 shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold rounded py-2 text-sm   '
               >
-                Logout
+                <p className='px-2 '> Logout</p>
               </button>
             </div>
           ) : (
             <Link to='/authentication'>
-              <button className='relative shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold  xs:py-2 xs:px-2  xxs:py-2 xxs:px-4 rounded  xxs:right-3 sm:left-20 sm:top-5'>
+              <button className='relative shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-2 top-0'>
                 Sign In
               </button>
             </Link>
