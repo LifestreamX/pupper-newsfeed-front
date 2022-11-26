@@ -53,6 +53,8 @@ const Form = ({ currentId, setCurrentId }) => {
       photo: '',
     });
 
+  
+
     setTimeout(() => {
       dispatch(getPosts());
     }, '5');
@@ -73,11 +75,12 @@ const Form = ({ currentId, setCurrentId }) => {
     <form
       className='xxs:w-full xs:w-full xs:max-w-sm  bg-white rounded p-15 flex flex-col sticky top-40'
       onSubmit={handleSubmit}
+      name='scrollForm'
     >
       {currentId ? (
-        <h1 className='text-center text-3xl p-5  '> Editing Post </h1>
+        <h1 className='text-center text-3xl p-5 '> Editing Post </h1>
       ) : (
-        <h1 className='text-center text-3xl p-5  '> Post a Pupdate</h1>
+        <h1 className='text-center text-3xl p-5 '> Post a Pupdate</h1>
       )}
       <div className='p-5'>
         {/* Name */}
@@ -206,18 +209,6 @@ const Form = ({ currentId, setCurrentId }) => {
                         setNewPost({ ...newPost, photo: base64 })
                       }
                     />
-
-                    {/* 
-                    <input
-                      id='file-upload'
-                      name='file-upload'
-                      type='file'
-                      className='sr-only'
-                      value={newPost.photo}
-                      onChange={(e) =>
-                        setNewPost({ ...newPost, photo: e.target.value })
-                      }
-                    /> */}
                   </label>
                 </div>
               </div>

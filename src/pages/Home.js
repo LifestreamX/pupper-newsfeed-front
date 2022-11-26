@@ -14,6 +14,8 @@ import Loading from '../components/Loading';
 import Post from '../components/post/Post';
 // import { getPosts } from './actions/Posts';
 
+
+
 const App = () => {
   const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
@@ -24,6 +26,8 @@ const App = () => {
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch, currentId]);
+
+
 
 
   return (

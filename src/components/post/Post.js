@@ -6,8 +6,8 @@ import {
   getPosts,
   lovePost,
 } from '../../features/posts/PostsSlice';
+import { animateScroll } from 'react-scroll';
 
-//
 const Post = ({ setCurrentId, currentId }) => {
   // const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
@@ -37,7 +37,22 @@ const Post = ({ setCurrentId, currentId }) => {
     }, 100);
   }, [switching]);
 
-  console.log(switching);
+  const scrollToTop = () => {
+    animateScroll.scrollToTop();
+  };
+
+  // Scroll logic
+  let Scroll = require('react-scroll');
+  let scroller = Scroll.scroller;
+
+  const scrollToForm = () => {
+    // Somewhere else, even another file
+    scroller.scrollTo('scrollForm', {
+      duration: 500,
+      delay: 100,
+      smooth: true,
+    });
+  };
 
   return (
     <>
@@ -45,32 +60,40 @@ const Post = ({ setCurrentId, currentId }) => {
         return (
           <div class='xs:max-w-lg    xl:max-w-sm   2xl:max-w-2xl 2xl:flex mb-20  sm:flex sm:flex-col 	 2xl:flex-row'>
             {/* Image */}
+
             <img
               class='  lg:h-auto lg:w-96 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center  '
               src={post?.photo}
+              name='scrollImage'
             ></img>
+
             <div class='border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal'>
-              {/* Edit Icon */}
-              <svg
-                onClick={() => setCurrentId(post._id)}
-                xmlns='http://www.w3.org/2000/svg'
-                className='h-6 w-6 relative  cursor-pointer ml-80 mb-5 image.png xs:left-28 lg:left-0 edit-icon xs:relative xs:left-0  '
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z'
-                />
-              </svg>
-              <div class='mb-8'>
+              <div className='relative flex justify-between '>
                 {/* Tags */}
-                <p class='text-sm text-gray-600 flex items-center relative bottom-7 '>
-                  # {post?.tags}{' '}
-                </p>
+                <div class='mb-8'>
+                  <p class='text-sm text-gray-600  '># {post?.tags} </p>
+                </div>
+                {/* Edit Icon */}
+                <div>
+                  <svg
+                    onClick={() => {
+                      setCurrentId(post._id);
+                      scrollToForm();
+                    }}
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='h-6 w-6 cursor-pointer image.png '
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z'
+                    />
+                  </svg>
+                </div>
               </div>
 
               {/* Title */}
