@@ -64,6 +64,8 @@ const Form = ({ currentId, setCurrentId }) => {
     });
   };
 
+  console.log(newPost.tags);
+
   return (
     <form
       className='xxs:w-full xs:w-full xs:max-w-sm  bg-white rounded p-15 flex flex-col sticky top-40'
@@ -155,14 +157,15 @@ const Form = ({ currentId, setCurrentId }) => {
           </div>
           <div className='xxs:w-2/3'>
             <input
+              required
+              placeholder='Seperate Tags By Commas'
               className='xxs:ml-5 xs:ml-0 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-slate-600'
               id='inline-password'
               type='text'
               value={newPost.tags}
               onChange={(e) =>
-                setNewPost({ ...newPost, tags: e.target.value.split(',#') })
+                setNewPost({ ...newPost, tags: e.target.value.split(',') })
               }
-              required
             />
           </div>
         </div>

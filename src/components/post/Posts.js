@@ -7,9 +7,17 @@ import { useSelector } from 'react-redux';
 const Posts = ({ setCurrentId, currentId }) => {
   const posts = useSelector((state) => state.posts);
 
+
   return (
-    <div className='mb-32 post-wrapper' key={posts._id}>
-      <Post setCurrentId={setCurrentId} currentId={currentId} />;
+    <div className='mb-32 post-wrapper'>
+      {posts?.posts.map((post) => (
+        <Post
+          setCurrentId={setCurrentId}
+          currentId={currentId}
+          post={post}
+          key={posts?._id}
+        />
+      ))}
     </div>
   );
 };
