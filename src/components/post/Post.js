@@ -44,7 +44,6 @@ const Post = ({ setCurrentId, currentId, post }) => {
     });
   };
 
-  console.log(post?.tags);
 
   return (
     <>
