@@ -26,7 +26,6 @@ export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
   try {
     await api.deletePost(id);
   } catch (error) {
-    // console.log(error);
   }
 });
 
@@ -36,7 +35,6 @@ export const updatePost = (id, post) => async (dispatch) => {
     const { data } = await api.updatePost(id, post);
     return data;
   } catch (error) {
-    // console.log(error);
   }
 };
 
@@ -44,10 +42,8 @@ export const updatePost = (id, post) => async (dispatch) => {
 export const lovePost = (id) => async (dispatch) => {
   try {
     const { data } = await api.lovePost(id);
-    // console.log('Hello')
     return data;
   } catch (error) {
-    // console.log(error);
   }
 };
 

@@ -35,7 +35,6 @@ const Form = ({ currentId, setCurrentId }) => {
 
     if (currentId) {
       dispatch(updatePost(currentId, newPost));
-      // console.log(updatePost);
     } else {
       dispatch(createPost(newPost));
     }
@@ -52,12 +51,6 @@ const Form = ({ currentId, setCurrentId }) => {
       tags: '',
       photo: '',
     });
-
-  
-
-    setTimeout(() => {
-      dispatch(getPosts());
-    }, '5');
   };
 
   // Clear button on form

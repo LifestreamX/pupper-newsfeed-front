@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const url = 'https://pupper-newsfeed-back.onrender.com/posts';
+// Production
+// const url = 'https://pupper-newsfeed-back.onrender.com/posts';
+
+// Dev
+const url = 'http://localhost:5000/posts';
 
 // Connecting to back end to work with posts database
 

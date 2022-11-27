@@ -40,12 +40,12 @@ const Header = () => {
       </Link>
 
       {/* Middle */}
-      <h1 className='font-bold text-2xl absolute top-0  md:text-4xl lg:text-5xl'>
+      <h1 className='font-bold text-2xl absolute top-0  md:text-4xl lg:text-5xl lg:my-3'>
         {' '}
         Pupper Newsfeed
       </h1>
       <Link to='/' className=''>
-        <img src={dog} alt='dog' className=' dog' />
+        <img src={dog} alt='dog' className=' dog lg:relative lg:top-5' />
       </Link>
 
       {/* Right Side */}
@@ -73,7 +73,7 @@ const Header = () => {
             </div>
           ) : (
             <Link to='/authentication'>
-              <button className='relative shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-2 top-0'>
+              <button className='relative shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold  py-1 px-1 top-0 lg:py-2 lg:px-2'>
                 Sign In
               </button>
             </Link>

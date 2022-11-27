@@ -9,28 +9,6 @@ import { useNavigate } from 'react-router-dom';
 const Authentication = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const state = null;
-
-  const [signInForm, setSignInForm] = useState(true);
-
-  const switching = () => {
-    setSignInForm(!signInForm);
-  };
-
-  // Sign in form inputs state
-  const [signInInputs, setSignInInputs] = useState({
-    email: '',
-    password: '',
-  });
-
-  // Sign up form inputs state
-  const [signUpInputs, setSignUpInputs] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
 
   //  When google signed in succesfully
   const googleSuccess = async (res) => {
@@ -46,17 +24,11 @@ const Authentication = () => {
     }
   };
 
-  // Logic for when form is submitted
-  const handleFormSignInSubmit = () => {};
-
   return (
     <main className='w-100 '>
       <section className='form container mx-auto '>
         <div className='google-form-wrapper xxs:top-80 xxs:justify-center xxs:align-middle  xxs:flex xxs:flex-row  xxs:content-center xxs:relative  '>
-          <form
-            className=' google-form xxs:w-100 xxs:relative  xs:w-full xs:max-w-sm  bg-white rounded p-15 flex flex-col sticky top-40'
-            onSubmit={handleFormSignInSubmit}
-          >
+          <form className=' google-form xxs:w-100 xxs:relative  xs:w-full xs:max-w-sm  bg-white rounded p-15 flex flex-col sticky top-40'>
             <h1 className='justify-center align-middle text-center p-10 font-bold text-4xl '>
               Sign In
             </h1>

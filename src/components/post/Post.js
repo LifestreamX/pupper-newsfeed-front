@@ -17,29 +17,21 @@ const Post = ({ setCurrentId, currentId }) => {
 
   const handleDelete = (id) => {
     dispatch(deletePost(id));
-    setTimeout(() => {
-      dispatch(getPosts());
-    }, 100);
+    dispatch(getPosts());
   };
 
   const handleLove = (id) => {
     dispatch(lovePost(id));
-    setTimeout(() => {
-      dispatch(getPosts());
-    }, 100);
+    dispatch(getPosts());
   };
+
+  console.log(posts);
 
   const [switching, setSwitching] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(getPosts());
-    }, 100);
-  }, [switching]);
-
-  const scrollToTop = () => {
-    animateScroll.scrollToTop();
-  };
+    dispatch(getPosts());
+  }, [switching, posts.length]);
 
   // Scroll logic
   let Scroll = require('react-scroll');
