@@ -9,11 +9,9 @@ import {
 import { animateScroll } from 'react-scroll';
 
 const Post = ({ setCurrentId, currentId, post }) => {
-  // const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
 
-  // REDUX TOOLKIT
-  // const { posts, loading } = useSelector((state) => state.posts);
+
 
   const handleDelete = (id) => {
     dispatch(deletePost(id));
@@ -46,7 +44,6 @@ const Post = ({ setCurrentId, currentId, post }) => {
 
   return (
     <>
-      <div class='xs:max-w-lg    xl:max-w-sm   2xl:max-w-2xl 2xl:flex mb-20  sm:flex sm:flex-col 	 2xl:flex-row  '>
         {/* Image */}
 
         <img
@@ -148,7 +145,6 @@ const Post = ({ setCurrentId, currentId, post }) => {
             </svg>
           </div>
         </div>
-      </div>
     </>
   );
 };

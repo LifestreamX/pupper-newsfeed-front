@@ -10,13 +10,10 @@ const userSlice = createSlice({
   reducers: {
     setSignedIn: (state, action) => {
       state.isSignedIn = action.payload;
-      // console.log(state.isSignedIn);
     },
     setUserData: (state, action) => {
       state.userData = action.payload;
-      // console.log(state.userData);
-      // Sets the logged in data to local storage persist on page refresh
-      // console.log(state.userData);
+
       localStorage.setItem('user', JSON.stringify({ state }));
     },
   },

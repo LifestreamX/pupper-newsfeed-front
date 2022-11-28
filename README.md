@@ -1,3 +1,8 @@
+TODO:
+loading spinner 
+go over redux logic and for id
+
+
 <!-- Client -->
 - React
 - Axios
