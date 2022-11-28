@@ -38,9 +38,9 @@ const App = () => {
           <div className='relative right-60 xl:relative xl:right-20 mt-20  xxs:flex xxs:justify-center xxs:right-0 top-16 '>
             {/* Loading icon while data is being fetched from the server  */}
             {posts.posts.length !== 0 ? (
-              <Loading />
-            ) : (
               <Posts currentId={currentId} setCurrentId={setCurrentId} />
+            ) : (
+              <Loading />
             )}
           </div>
         </div>
