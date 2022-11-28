@@ -44,14 +44,13 @@ const Post = ({ setCurrentId, currentId, post }) => {
     });
   };
 
-
   return (
     <>
-      <div class='xs:max-w-lg    xl:max-w-sm   2xl:max-w-2xl 2xl:flex mb-20  sm:flex sm:flex-col 	 2xl:flex-row'>
+      <div class='xs:max-w-lg    xl:max-w-sm   2xl:max-w-2xl 2xl:flex mb-20  sm:flex sm:flex-col 	 2xl:flex-row  '>
         {/* Image */}
 
         <img
-          class='  lg:h-auto lg:w-96 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center  '
+          class='  lg:h-auto lg:w-96 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center object-contain  '
           src={post?.photo}
           name='scrollImage'
         ></img>

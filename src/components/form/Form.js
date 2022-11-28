@@ -39,9 +39,6 @@ const Form = ({ currentId, setCurrentId }) => {
       dispatch(createPost(newPost));
     }
 
-    // REDUX TOOLKIT
-    // dispatch(createPost(newPost));
-
     setCurrentId(null);
 
     setNewPost({
@@ -51,6 +48,8 @@ const Form = ({ currentId, setCurrentId }) => {
       tags: '',
       photo: '',
     });
+
+    dispatch(getPosts());
   };
 
   // Clear button on form
@@ -63,8 +62,6 @@ const Form = ({ currentId, setCurrentId }) => {
       photo: '',
     });
   };
-
-  console.log(newPost.tags);
 
   return (
     <form
