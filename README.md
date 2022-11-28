@@ -32,13 +32,6 @@
 
 
 
-TODO: 
- 
- 
- - refactor Redux with RTK
- - Go over Redux and fetching code
- - check out part 2 of video
-
 
 
 
