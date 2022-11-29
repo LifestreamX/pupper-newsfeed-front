@@ -22,20 +22,20 @@ const App = () => {
 
   // Dispatching get post action for the getPost reducer
   useEffect(() => {
-    dispatch(getPosts());
     done();
+    dispatch(getPosts());
   }, [dispatch, currentId]);
 
   const [isLoading, setIsLoading] = useState(true);
 
   let done = () => {
-    let isDone = loading;
-    if (isDone === false) {
+    console.log(loading)
+    if (loading === false) {
       setIsLoading(false);
     }
   };
 
-  console.log(isLoading);
+  // console.log(isLoading);
 
   return (
     <main className='w-100 '>
