@@ -23,9 +23,19 @@ const App = () => {
   // Dispatching get post action for the getPost reducer
   useEffect(() => {
     dispatch(getPosts());
+    done();
   }, [dispatch, currentId]);
 
-  console.log(posts.loading);
+  const [isLoading, setIsLoading] = useState(true);
+
+  let done = () => {
+    let isDone = loading;
+    if (isDone === false) {
+      setIsLoading(false);
+    }
+  };
+
+  console.log(isLoading);
 
   return (
     <main className='w-100 '>
@@ -39,8 +49,9 @@ const App = () => {
           </div>
           <div className='relative right-60 xl:relative xl:right-20 mt-20  xxs:flex xxs:justify-center xxs:right-0 top-16 '>
             {/* Loading icon while data is being fetched from the server  */}
+            {/* <Loading /> */}
 
-            {posts.loading && <Loading />}
+            {isLoading && <Loading />}
 
             <Posts currentId={currentId} setCurrentId={setCurrentId} />
           </div>
