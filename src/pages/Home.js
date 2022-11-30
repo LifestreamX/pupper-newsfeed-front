@@ -27,13 +27,15 @@ const App = () => {
 
   let [isLoading, setIsLoading] = useState(true);
 
-  let isPostsLoading = () => {
-    if (loading === false) {
-      setIsLoading(false);
-    }
-  };
+  console.log(isLoading);
 
   useEffect(() => {
+    let isPostsLoading = () => {
+      if (loading === false) {
+        setIsLoading(false);
+      }
+    };
+
     isPostsLoading();
   }, []);
 
