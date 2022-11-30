@@ -18,6 +18,10 @@ main {
   min-height: 100% !important;
 }
 
+.file {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 480px) {
   input[type='file'] {
     /* font-size: 80% !important; */

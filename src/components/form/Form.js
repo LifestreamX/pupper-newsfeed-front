@@ -53,7 +53,7 @@ const Form = ({ currentId, setCurrentId }) => {
   };
 
   // Clear button on form
-  const handleClear = ({ currentId, setCurrentId }) => {
+  const handleClear = () => {
     setNewPost({
       name: '',
       title: '',

@@ -25,7 +25,17 @@ const App = () => {
     dispatch(getPosts());
   }, [dispatch, currentId]);
 
-  console.log(loading);
+  let [isLoading, setIsLoading] = useState(true);
+
+  let isPostsLoading = () => {
+    if (loading === false) {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    isPostsLoading();
+  }, []);
 
   return (
     <main className='w-100 '>
@@ -38,8 +48,8 @@ const App = () => {
             </div>
           </div>
 
-          <div className='relative top-20 flex justify-center align-middle lg:top-56 xl:top-80   2xl:absolute 2xl:top-80 2xl:right-96   '>
-            {loading && <Loading />}
+          <div className='relative top-20 flex justify-center align-middle lg:top-56 xl:top-80    2xl:absolute 2xl:top-80 2xl:right-96   '>
+            {isLoading && <Loading />}
           </div>
           <div className='relative right-60 xl:relative xl:right-20 mt-20  xxs:flex xxs:justify-center xxs:right-0 top-16 '>
             <Posts currentId={currentId} setCurrentId={setCurrentId} />
