@@ -27,17 +27,15 @@ const App = () => {
 
   let [isLoading, setIsLoading] = useState(true);
 
-  console.log(isLoading);
+  let isPostsLoading = () => {
+    if (posts.posts.length > 0 && loading === false) {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    let isPostsLoading = () => {
-      if (loading === false) {
-        setIsLoading(false);
-      }
-    };
-
     isPostsLoading();
-  }, []);
+  }, [posts.posts.length]);
 
   return (
     <main className='w-100 '>
