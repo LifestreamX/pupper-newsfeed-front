@@ -5,7 +5,7 @@
 Pupper Newsfeed (Front End)
 
 
-Access my site at https://pupper-newsfeed-front.onrender.com
+Access my site at https://puppernewsfeed.tyler-allen.com
 
 ## About The App
 
