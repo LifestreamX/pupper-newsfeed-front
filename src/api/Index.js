@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Production
-const url = 'https://wild-plum-dibbler.cyclic.app/posts';
+const url = 'https://puppernewsfeed.tyler-allen.com/posts';
 
 // Dev
 // const url = 'http://localhost:5000/posts';
