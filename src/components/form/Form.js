@@ -65,7 +65,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   return (
     <form
-      className='xxs:w-full xs:w-full xs:max-w-sm  bg-white rounded p-15 flex flex-col sticky top-40'
+      className='xxs:w-full xs:w-full xs:max-w-sm  bg-white rounded flex flex-col sticky lg:mx-5'
       onSubmit={handleSubmit}
       name='scrollForm'
     >

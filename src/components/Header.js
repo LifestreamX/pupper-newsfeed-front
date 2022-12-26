@@ -73,7 +73,7 @@ const Header = () => {
             </div>
           ) : (
             <Link to='/authentication'>
-              <button className='relative shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold  py-1 px-1 top-0 lg:py-2 lg:px-2'>
+              <button className='xxs:text-sm xs:text-base relative shadow bg-slate-700 hover:bg-slate-800 focus:shadow-outline focus:outline-none text-white font-bold  py-1 px-1 top-0 lg:py-2 lg:px-2'>
                 Sign In
               </button>
             </Link>
