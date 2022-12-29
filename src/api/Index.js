@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // Production
-const url = 'https://pupper-newsfeed-back.onrender.com/posts';
+// const url = 'https://pupper-newsfeed-back.onrender.com/posts';
+const url = 'https://pupper-newsfeed-back-production.up.railway.app/posts';
 
 // Dev
 // const url = 'http://localhost:5000/posts';
