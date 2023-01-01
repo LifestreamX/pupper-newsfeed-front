@@ -17,18 +17,23 @@ const Post = ({ setCurrentId, currentId, post }) => {
 
   const handleDelete = (id) => {
     dispatch(deletePost(id));
+    setTimeout(() => {
+      dispatch(getPosts());
+    }, 800);
   };
 
   const handleLove = (id) => {
     dispatch(lovePost(id));
+    setTimeout(() => {
+      dispatch(getPosts());
+    }, 800);
   };
 
   useEffect(() => {
     dispatch(getPosts());
-    setTimeout(() => {
-      setSwitching(!switching);
-    }, 800);
   }, [switching]);
+
+  console.log(switching);
 
   // Scroll logic
   let Scroll = require('react-scroll');
