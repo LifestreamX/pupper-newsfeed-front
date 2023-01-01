@@ -25,8 +25,7 @@ export const createPost = createAsyncThunk('posts/createPost', async (post) => {
 export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
   try {
     await api.deletePost(id);
-  } catch (error) {
-  }
+  } catch (error) {}
 });
 
 // Update
@@ -34,8 +33,7 @@ export const updatePost = (id, post) => async (dispatch) => {
   try {
     const { data } = await api.updatePost(id, post);
     return data;
-  } catch (error) {
-  }
+  } catch (error) {}
 };
 
 // Love
@@ -43,8 +41,7 @@ export const lovePost = (id) => async (dispatch) => {
   try {
     const { data } = await api.lovePost(id);
     return data;
-  } catch (error) {
-  }
+  } catch (error) {}
 };
 
 const postSlice = createSlice({

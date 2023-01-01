@@ -14,6 +14,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const post = useSelector((state) =>
     currentId ? state.posts.posts.find((p) => p._id === currentId) : null
   );
+
   const dispatch = useDispatch();
 
   // Setting the newPost state to id information if matched on edit click

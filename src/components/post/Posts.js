@@ -3,9 +3,12 @@ import Post from './Post';
 
 // Fetching data from global redux store
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const Posts = ({ setCurrentId, currentId }) => {
   const posts = useSelector((state) => state.posts);
+
+  
 
   return (
     <div className='mb-32 post-wrapper'>
