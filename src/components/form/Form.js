@@ -50,7 +50,7 @@ const Form = ({ currentId, setCurrentId }) => {
       photo: '',
     });
 
-    dispatch(getPosts());
+    // dispatch(getPosts());
   };
 
   // Clear button on form

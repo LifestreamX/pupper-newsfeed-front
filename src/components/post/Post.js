@@ -33,7 +33,6 @@ const Post = ({ setCurrentId, currentId, post }) => {
     dispatch(getPosts());
   }, [switching]);
 
-  console.log(switching);
 
   // Scroll logic
   let Scroll = require('react-scroll');
