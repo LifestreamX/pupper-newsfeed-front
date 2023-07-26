@@ -25,7 +25,7 @@ export const createPost = createAsyncThunk('posts/createPost', async (post) => {
 export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
   try {
     await api.deletePost(id);
-  } catch (error) {}-
+  } catch (error) {}
 });
 
 // Update
