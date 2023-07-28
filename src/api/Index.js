@@ -1,9 +1,12 @@
 import axios from 'axios';
 
-// Production
-// const url = 'https://pupper-newsfeed-back.onrender.com/posts';
-// const url = 'https://pupper-newsfeed-back-production.up.railway.app/posts';
-const url = 'https://pupper-newsfeed-back.vercel.app/posts';
+
+
+const backendServerUrl = process.env.REACT_APP_BACKEND_SERVER_URL;
+
+const devUrl = process.env.REACT_APP_DEV_SERVER_URL;
+
+const url = backendServerUrl;
 
 // Dev
 // const url = 'http://localhost:5000/posts';
