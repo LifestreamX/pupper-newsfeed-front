@@ -31,6 +31,9 @@ const App = () => {
     if (posts.posts.length > 0 && loading === false) {
       setIsLoading(false);
     }
+    if (posts.posts.length === 0) {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
