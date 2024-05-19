@@ -12,20 +12,30 @@ const Posts = ({ setCurrentId, currentId }) => {
 
   allPosts.reverse();
 
-  console.log(allPosts)
+  console.log(allPosts.length);
 
   return (
-    <div className='mb-32 post-wrapper'>
-      {allPosts.map((post) => (
-        // console.log(post._id)
-        <div
-          key={posts._id}
-          class='xs:max-w-lg    xl:max-w-sm   2xl:max-w-2xl 2xl:flex mb-20  sm:flex sm:flex-col 	 2xl:flex-row  '
-        >
-          <Post setCurrentId={setCurrentId} currentId={currentId} post={post} />
+    <>
+      {allPosts.length === 0 ? (
+        <h1 className='text-white font-extrabold text-4xl'>No Posts</h1>
+      ) : (
+        <div className='mb-32 post-wrapper'>
+          {allPosts.map((post) => (
+            // console.log(post._id)
+            <div
+              key={posts._id}
+              class='xs:max-w-lg    xl:max-w-sm   2xl:max-w-2xl 2xl:flex mb-20  sm:flex sm:flex-col 	 2xl:flex-row  '
+            >
+              <Post
+                setCurrentId={setCurrentId}
+                currentId={currentId}
+                post={post}
+              />
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 };
 
