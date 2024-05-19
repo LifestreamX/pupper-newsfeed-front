@@ -13,7 +13,7 @@ const url = backendServerUrl;
 
 // Connecting to back end to work with posts database
 
-export const fetchPosts = () => axios.get(devUrl);
+export const fetchPosts = () => axios.get(url);
 
 export const createPost = (newPost) => axios.post(url, newPost);
 
