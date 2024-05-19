@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+
+
 const backendServerUrl = process.env.REACT_APP_BACKEND_SERVER_URL;
 
 const devUrl = process.env.REACT_APP_DEV_SERVER_URL;
@@ -11,7 +13,7 @@ const url = backendServerUrl;
 
 // Connecting to back end to work with posts database
 
-export const fetchPosts = () => axios.get(devUrl);
+export const fetchPosts = () => axios.get(url);
 
 export const createPost = (newPost) => axios.post(url, newPost);
 
