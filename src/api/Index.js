@@ -23,3 +23,5 @@ export const updatePost = (id, updatedPost) =>
 export const deletePost = (id) => axios.delete(`${url}/${id}`);
 
 export const lovePost = (id) => axios.patch(`${url}/${id}/lovePost`);
+
+// Test
